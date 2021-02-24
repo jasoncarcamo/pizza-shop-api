@@ -5,10 +5,17 @@ const morgan = require("morgan");
 const app = express();
 const {NODE_ENV} = require("../../config");
 
+const RegisterRouter = require("../routes/AuthRouters/RegisterRouter");
+const LogInRouter = require("../routes/AuthRouters/LogInRouter");
+
 app.use(morgan((NODE_ENV === "production") ? "tiny" : "common"));
 app.use(cors());
 app.use(express.json());
 app.use(helmet());
+
+//Authenthication routes
+app.use("/api", RegisterRouter);
+app.use("/api", LogInRouter);
 
 app.use(function errorHandler(error, req, res, next) {
     let response;
