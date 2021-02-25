@@ -9,6 +9,7 @@ const RegisterRouter = require("../routes/AuthRouters/RegisterRouter");
 const LogInRouter = require("../routes/AuthRouters/LogInRouter");
 
 const MenuItemsRouter = require("../routes/MenuItemsRouter/MenuItemsRouter");
+const OrdersRouter = require("../routes/OrdersRouter/OrdersRouter");
 
 app.use(morgan((NODE_ENV === "production") ? "tiny" : "common"));
 app.use(cors());
@@ -20,6 +21,7 @@ app.use("/api", RegisterRouter);
 app.use("/api", LogInRouter);
 
 app.use("/api", MenuItemsRouter);
+app.use("/api", OrdersRouter);
 
 app.use(function errorHandler(error, req, res, next) {
     let response;
