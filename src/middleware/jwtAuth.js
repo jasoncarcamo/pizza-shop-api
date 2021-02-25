@@ -1,4 +1,5 @@
 const CustomerService = require("../services/CustomerService/CustomerService");
+const JwtService = require("../services/JwtService/JwtService");
 
 function requireAuth( req, res, next){
     const authToken = req.get("authorization") || "";
@@ -9,10 +10,13 @@ function requireAuth( req, res, next){
     } else {
         bearerToken = authToken.slice( 7, authToken.length);
     };
-
+    console.log(bearerToken)
     try{
-        const payload = AuthService.verifyJwt(bearerToken);
+        const payload = JwtService.verifyToken(bearerToken);
+        console.log(payload)
         const email = payload.sub;
+
+        console.log("email", email);
         
         CustomerService.getCustomerByEmail( req.app.get("db"), email)
             .then( customer => {

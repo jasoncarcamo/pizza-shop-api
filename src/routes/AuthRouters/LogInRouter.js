@@ -29,6 +29,7 @@ LogInRouter
 
         CustomerService.getCustomerByEmail(database, customer.email)
             .then( dbCustomer => {
+                
                 if(!dbCustomer){
                     return res.status(404).json({
                         error: `${customer.email} not found`
