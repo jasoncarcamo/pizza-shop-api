@@ -11,6 +11,7 @@ CREATE TABLE orders (
     subtotal DECIMAL NOT NULL,
     time_placed TIMESTAMP,
     time_ready TIMESTAMP,
+    order_items TEXT [],
     date_created TIMESTAMP NOT NULL,
     customer_id BIGINT REFERENCES customers(id) ON DELETE CASCADE
 );

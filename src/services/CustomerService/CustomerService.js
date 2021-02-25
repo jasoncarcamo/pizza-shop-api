@@ -2,6 +2,9 @@ const CustomerService = {
     getCustomerByEmail(db, email){
         return db.select("*").from("customers").where({email}).first();
     },
+    getCustomerById(db, id){
+        return db.select("*").from("customers").where({id}).first();
+    },
     createCustomer(db, newCustomer){
         return db.insert(newCustomer).into("customers").returning("*").then(([createdCustomer]) => createdCustomer);
     },

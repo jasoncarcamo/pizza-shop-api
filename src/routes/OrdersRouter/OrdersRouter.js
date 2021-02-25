@@ -115,6 +115,7 @@ OrdersRouter
 
         OrderService.getOrderById(database, id)
             .then( order => {
+                
                 if(!order){
                     return res.status(404).json({
                         error: `Order not found`
@@ -151,4 +152,4 @@ OrdersRouter
             });
     });
 
-module.exports = OrderService;
+module.exports = OrdersRouter;
