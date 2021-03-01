@@ -4,6 +4,23 @@ const CustomerService = require("../../services/CustomerService/CustomerService"
 const {requireAuth} = require("../../middleware/jwtAuth");
 
 CustomerRouter
+    .route("/customer")
+    .get(requireAuth, (req, res)=>{
+        const customer = req.user;
+        const database = req.app.get("db");
+
+        CustomerService.getCustomerById(database, customer.id)
+            .then( dbCustomer => {
+
+                delete dbCustomer.password;
+
+                return res.status(200).json({
+                    customer: dbCustomer
+                });
+            });
+    })
+
+CustomerRouter
     .route("/customer/:id")
     .all(requireAuth)
     .get((req, res)=>{

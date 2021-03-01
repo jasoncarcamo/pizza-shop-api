@@ -36,7 +36,8 @@ OrdersRouter
             subtotal,
             time_placed,
             time_ready,
-            date_createdL,
+            order_items,
+            date_created,
             customer_id
         } = req.body;
         const newOrder = {
@@ -51,7 +52,8 @@ OrdersRouter
             subtotal,
             time_placed,
             time_ready,
-            date_createdL,
+            order_items,
+            date_created,
             customer_id
         };
 
@@ -76,7 +78,7 @@ OrdersRouter
     .all(requireAuth)
     .get((req, res)=>{
         const database = req.app.get("db");
-
+        const id = req.params.id;
         
     })
     .patch((req, res)=>{
@@ -94,6 +96,7 @@ OrdersRouter
             subtotal,
             time_placed,
             time_ready,
+            order_items,
             date_createdL,
             customer_id
         } = req.body;
@@ -109,6 +112,7 @@ OrdersRouter
             subtotal,
             time_placed,
             time_ready,
+            order_items,
             date_createdL,
             customer_id
         };
