@@ -7,7 +7,8 @@
     "start": "node ./src/app/server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon ./src/app/server.js",
-    "test-migrate": "postgrator --config ./test-migration.js"
+    "test-migrate": "postgrator --config ./test-migration.js",
+    "prod-migrate": "postgrator --config ./prod-migration.js"
   },
   "keywords": [],
   "engines": {
@@ -24,7 +25,7 @@
     "jsonwebtoken": "^8.5.1",
     "knex": "^0.21.18",
     "morgan": "^1.10.0",
-    "pg": "^8.5.1"
+    "pg": "^7.17.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.7",
