@@ -12,6 +12,7 @@ const MenuItemsRouter = require("../routes/MenuItemsRouter/MenuItemsRouter");
 const OrdersRouter = require("../routes/OrdersRouter/OrdersRouter");
 
 app.use(morgan((NODE_ENV === "production") ? "tiny" : "common"));
+app.use(express.static("public"));
 app.use(cors());
 app.use(express.json());
 app.use(helmet());
