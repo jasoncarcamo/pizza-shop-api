@@ -2,13 +2,17 @@
   "name": "pizza-shop-api",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "./src/app/server.js",
   "scripts": {
+    "start": "node ./src/app/server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon ./src/app/server.js",
     "test-migrate": "postgrator --config ./test-migration.js"
   },
   "keywords": [],
+  "engines": {
+    "node": "12.18.2"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
