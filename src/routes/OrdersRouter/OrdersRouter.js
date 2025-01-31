@@ -77,6 +77,8 @@ OrdersRouter
                 });
             };
         };
+
+        console.log(newOrder)
         
         OrderService.createOrder(database, newOrder)
             .then( createdOrder => {
