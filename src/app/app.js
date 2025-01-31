@@ -10,6 +10,7 @@ const LogInRouter = require("../routes/AuthRouters/LogInRouter");
 const CustomerRouter = require("../routes/CustomerRouter/CustomerRouter");
 const MenuItemsRouter = require("../routes/MenuItemsRouter/MenuItemsRouter");
 const OrdersRouter = require("../routes/OrdersRouter/OrdersRouter");
+const ToppingsRouter = require("../routes/ToppingsRouter/ToppingsRouter");
 
 app.use(morgan((NODE_ENV === "production") ? "tiny" : "common"));
 app.use(express.static("public"));
@@ -24,6 +25,7 @@ app.use("/api", LogInRouter);
 app.use("/api", CustomerRouter);
 app.use("/api", MenuItemsRouter);
 app.use("/api", OrdersRouter);
+app.use("/api", ToppingsRouter);
 
 app.use(function errorHandler(error, req, res, next) {
     let response;
