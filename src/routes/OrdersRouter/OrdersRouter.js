@@ -5,8 +5,7 @@ const {requireAuth} = require("../../middleware/jwtAuth");
 
 OrdersRouter
     .route("/orders")
-    .all(requireAuth)
-    .get((req, res)=>{
+    .get(requireAuth, (req, res)=>{
         const database = req.app.get("db");
 
         OrderService.getAllOrders(database)
@@ -58,13 +57,14 @@ OrdersRouter
         };
 
         for(const [key, value] of Object.entries(newOrder)){
-            if(value === undefined || value === ""){
+            if(value === undefined){
+                console.log("error:", key, value)
                 return res.status(400).json({
                     error: `${key.split("_").join(" ")} can only have a value or be null`
                 });
             };
         };
-
+        console.log(newOrder)
         OrderService.createOrder(database, newOrder)
             .then( createdOrder => {
                 return res.status(200).json({
