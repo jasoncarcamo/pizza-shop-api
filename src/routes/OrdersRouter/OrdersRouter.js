@@ -23,6 +23,7 @@ OrdersRouter
     })
     .post((req, res)=>{
         const database = req.app.get("db");
+
         const {
             order_type,
             customer_first_name,
@@ -64,7 +65,7 @@ OrdersRouter
                 });
             };
         };
-        console.log(newOrder)
+        
         OrderService.createOrder(database, newOrder)
             .then( createdOrder => {
                 return res.status(200).json({
