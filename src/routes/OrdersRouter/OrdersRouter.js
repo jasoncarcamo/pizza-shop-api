@@ -4,6 +4,18 @@ const OrderService = require("../../services/OrderService/OrderService");
 const {requireAuth} = require("../../middleware/jwtAuth");
 
 OrdersRouter
+    .route("/order/:mobile_number")
+    .get((req, res)=>{
+        const database = req.app.get("db");
+        const mobile_number = req.params.mobile_number;
+        
+        OrderService.getOrdersByMobileNumber(database, mobile_number)
+            .then( orders => {
+                return res.status(200).json({orders});
+            });
+    });
+
+OrdersRouter
     .route("/orders")
     .get(requireAuth, (req, res)=>{
         const database = req.app.get("db");

@@ -5,6 +5,9 @@ const OrderService = {
     getAllCustomerOrders(db, customer_id){
         return db.select("*").from("orders").where({customer_id});
     },
+    getOrdersByMobileNumber(db, mobile_number){
+        return db.select("*").from("orders").where({customer_mobile_number: mobile_number}).returning("*").then(([orders]) => orders);
+    },
     getOrderById(db, id){
         return db.select("*").from("orders").where({id}).first();
     },
