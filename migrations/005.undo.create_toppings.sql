@@ -1,1 +1,1 @@
-DROP TABLE IF EXISTS condiments;
+DROP TABLE IF EXISTS toppings;
